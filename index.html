@@ -121,6 +121,7 @@
             display: flex;
             gap: 16px;
             margin-top: 32px;
+            flex-wrap: wrap;
         }
 
         .btn {
@@ -192,11 +193,39 @@
             box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
         }
 
-        .project-image img {
+        .project-image {
+            display: flex;
+            flex-direction: column;
+            border-right: 1px solid var(--border-color);
+        }
+
+        .project-image > img {
             width: 100%;
             height: 100%;
+            max-height: 350px;
             object-fit: cover;
-            border-right: 1px solid var(--border-color);
+        }
+
+        .project-gallery {
+            display: flex;
+            gap: 12px;
+            padding: 16px;
+            background: var(--bg-body);
+            border-top: 1px solid var(--border-color);
+            overflow-x: auto;
+        }
+
+        .project-gallery img {
+            height: 80px;
+            width: 80px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            transition: transform 0.2s;
+        }
+
+        .project-gallery img:hover {
+            transform: scale(1.05);
         }
 
         .project-info {
@@ -214,21 +243,16 @@
         }
 
         .project-info h3 {
-            font-size: 2rem;
-            font-family: 'Cairo', sans-serif; /* خط عربي مميز للعنوان */
+            font-size: 1.5rem;
+            font-family: 'Inter', 'Cairo', sans-serif;
+            color: var(--text-main);
         }
 
         .project-desc {
             color: var(--text-muted);
             margin-bottom: 16px;
             font-size: 0.95rem;
-        }
-
-        .arabic-text {
-            direction: rtl;
-            font-family: 'Cairo', sans-serif;
-            text-align: right;
-            margin-bottom: 24px;
+            line-height: 1.7;
         }
 
         /* ==========================================================================
@@ -293,6 +317,19 @@
             display: block;
         }
 
+        .cert-images {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .cert-images .cert-image {
+            width: calc(50% - 7.5px);
+            max-width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
         /* ==========================================================================
            Footer & Contact (تذييل الصفحة وطرق التواصل)
            ========================================================================== */
@@ -339,10 +376,9 @@
             .project-card {
                 grid-template-columns: 1fr; /* تحويل الشبكة إلى عمود واحد */
             }
-            .project-image img {
+            .project-image {
                 border-right: none;
                 border-bottom: 1px solid var(--border-color);
-                height: 250px;
             }
         }
     </style>
@@ -358,11 +394,12 @@
                 <h2>Computer & Systems Engineering<br>I build software that solves real problems.</h2>
                 <div class="btn-group">
                     <a href="#work" class="btn btn-primary">View My Work <i class="fas fa-arrow-up-right-from-square" style="margin-left: 8px;"></i></a>
+                    <!-- تمت إضافة زر الـ Resume هنا -->
+                    <a href="https://www.self.so/mohamed-sedawi-twe9m3" target="_blank" rel="noopener noreferrer" class="btn btn-outline"><i class="fas fa-file-alt" style="margin-right: 8px;"></i> Resume</a>
                     <a href="#contact" class="btn btn-outline">Contact Me</a>
                 </div>
             </div>
             <div class="hero-image">
-                <!-- مسار نسبي (Relative Path) يشير إلى مجلد الصور -->
                 <img src="images/pic.jpg" alt="Mohamed Sedawi" loading="lazy">
             </div>
         </div>
@@ -385,17 +422,22 @@
         <article class="project-card">
             <div class="project-image">
                 <img src="images/wadi.jpg" alt="مكتبة الوادي App Screenshot" loading="lazy">
+                <!-- تمت إضافة الصور الجديدة هنا كمعرض مصغر أسفل الصورة الرئيسية -->
+                <div class="project-gallery">
+                    <img src="images/s1.jpg" alt="Screenshot 1" loading="lazy">
+                    <img src="images/s2.jpg" alt="Screenshot 2" loading="lazy">
+                    <img src="images/s3.jpg" alt="Screenshot 3" loading="lazy">
+                    <img src="images/s4.jpg" alt="Screenshot 4" loading="lazy">
+                    <img src="images/s5.jpg" alt="Screenshot 5" loading="lazy">
+                </div>
             </div>
             <div class="project-info">
                 <span class="project-type">Mobile Application · Personal Project Showcase</span>
-                <h3 class="arabic-text" style="margin-bottom: 8px;">مكتبة الوادي</h3>
+                <!-- تم تحديث العنوان والوصف حسب طلبك -->
+                <h3 style="margin-bottom: 16px;">مكتبة الوادي "Al-Wadi Library" — Digital Library Web & Android Application</h3>
                 
-                <div class="arabic-text project-desc">
-                    <strong>الهدف والحل:</strong> تطبيق موبايل تم تطويره ليكون منصة رقمية متكاملة، يهدف لحل مشكلة إدارة المحتوى وتقديمه للمستخدمين بفعالية. تم دمج التقنيات الحديثة مع الذكاء الاصطناعي لتسريع عملية التطوير وحل تحديات البناء (Build Errors).
-                </div>
-
                 <p class="project-desc">
-                    I worked on the Al-Wadi Library project as a developer, using AI-assisted development to build and configure an Android application. My responsibilities included preparing the development environment, managing project files, troubleshooting build errors, configuring Capacitor, and integrating the application with Supabase. I used Visual Studio Code for code editing, Node.js and npm for dependency management and builds, Capacitor to package the web application for Android, Android Studio and Gradle to build APK files, and GitHub for version control. I also configured Java, tested Debug and Release builds, and prepared a signed Release APK for installation and testing on Android devices.
+                    Designed, developed, and built a digital library application using HTML, CSS, JavaScript, TypeScript, React, and Vite. Integrated Supabase for database management, authentication, and backend services using SQL and PostgreSQL. Developed features for browsing books, reading content, user interactions, and community discussions. Used Capacitor to package the web application as an Android APK and Android Studio for Android project management and build testing. Performed application testing, debugging, and production builds, and used Git and GitHub for version control and source code management.
                 </p>
             </div>
         </article>
@@ -432,15 +474,16 @@
             <div class="timeline-item">
                 <h4><i class="fas fa-certificate" style="margin-left: 8px; color: var(--primary);"></i> NTI - Data Analysis for Machine Learning</h4>
                 <p style="color: var(--text-muted); font-family: 'Cairo', sans-serif;">شهادة إتمام المسار التدريبي من المعهد القومي للاتصالات.</p>
-                <img src="images/nti.jpg" alt="NTI Certificate" class="cert-image" loading="lazy">
+                <div class="cert-images">
+                    <img src="images/nti.jpg" alt="NTI Certificate" class="cert-image" loading="lazy">
+                    <img src="images/nvidia.jpg" alt="nvidia Certificate" class="cert-image" loading="lazy">
+                </div>
             </div>
 
             <!-- شهادة ITI -->
             <div class="timeline-item">
                 <h4><i class="fas fa-certificate" style="margin-left: 8px; color: var(--primary);"></i> ITI - AI Course</h4>
                 <p style="color: var(--text-muted); font-family: 'Cairo', sans-serif;">دورة متقدمة في الذكاء الاصطناعي من معهد تكنولوجيا المعلومات.</p>
-                <!-- يمكنك تغيير اسم الصورة إذا كان مختلفاً في مجلد images -->
-                <!-- <img src="images/iti.jpg" alt="ITI Certificate" class="cert-image" loading="lazy"> -->
             </div>
         </div>
     </section>
